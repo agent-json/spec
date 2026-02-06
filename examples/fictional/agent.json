@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "subject": {
+    "name": "Example Entity",
+    "domain": "example.org",
+    "type": "project",
+    "urls": {
+      "homepage": "https://example.org/",
+      "docs": "https://example.org/docs",
+      "support": "https://example.org/support",
+      "privacy": "https://example.org/privacy"
+    }
+  },
+  "facts": [
+    {
+      "key": "support_email",
+      "value": "support@example.org",
+      "evidence": ["https://example.org/support"]
+    },
+    {
+      "key": "status_page",
+      "value": "https://status.example.org",
+      "notes": "Service status and incident history."
+    },
+    {
+      "key": "data_retention_days",
+      "value": 30,
+      "notes": "Applies to application logs, not billing records.",
+      "evidence": ["https://example.org/privacy"]
+    }
+  ],
+  "last_reviewed": "2026-02-06"
+}

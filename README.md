@@ -25,8 +25,8 @@ A single machine-readable file hosted on the domain:
 It contains a narrow set of domain-owner asserted facts plus links to supporting pages.
 
 This repo provides:
-- a v1 spec (`SPEC.md`)
-- examples (`/examples`)
+- a v1 spec: [`SPEC.md`](./SPEC.md)
+- examples: [`/examples`](./examples)
 - optional validation tooling (future)
 
 ## Non-goals (v1)
@@ -47,15 +47,12 @@ agent-json does NOT try to:
 ## Try it in 5 minutes
 
 1) Open an example:
-
-- `examples/fictional/agent.json`
+- [`examples/fictional/agent.json`](./examples/fictional/agent.json)
 
 2) Publish on your domain:
-
 - host at `/.well-known/agent.json`
 - serve `Content-Type: application/json`
 
 3) Verify it loads:
-
 ```bash
 curl -s https://YOURDOMAIN.com/.well-known/agent.json | jq

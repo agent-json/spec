@@ -1,40 +1,73 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://agentjson.org/schema/agent-json-1.0.schema.json",
+  "$id": "https://agent-json.org/schema/agent-json-1.0.schema.json",
   "title": "agent-json 1.0",
+  "description": "A minimal, domain-hosted facts file for AI agents. Domain-owner asserted facts with optional evidence links.",
   "type": "object",
   "required": ["schema_version", "subject", "last_reviewed"],
   "properties": {
     "schema_version": {
       "type": "string",
-      "const": "1.0"
+      "const": "1.0",
+      "description": "Schema version for this document. Must be '1.0' for agent-json v1."
     },
     "subject": {
       "type": "object",
+      "description": "Describes what this file is about (the subject being described by the domain owner).",
       "required": ["name", "domain"],
       "properties": {
-        "name": { "type": "string", "minLength": 1 },
-        "domain": { "type": "string", "minLength": 1 },
-        "type": { "type": "string" },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-friendly name of the subject."
+        },
+        "domain": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The domain asserting these facts (the domain hosting /.well-known/agent.json)."
+        },
+        "type": {
+          "type": "string",
+          "description": "Optional subject type (e.g., organization, product, service, project, dataset, community, other)."
+        },
         "urls": {
           "type": "object",
-          "additionalProperties": { "type": "string", "format": "uri" }
+          "description": "Optional canonical URLs for context (homepage, docs, status, support, privacy, terms, etc.).",
+          "additionalProperties": {
+            "type": "string",
+            "format": "uri"
+          }
         }
       },
       "additionalProperties": true
     },
     "facts": {
       "type": "array",
+      "description": "List of domain-owner asserted facts. Each fact is a small claim with an optional evidence list.",
+      "default": [],
       "items": {
         "type": "object",
         "required": ["key", "value"],
         "properties": {
-          "key": { "type": "string", "minLength": 1 },
-          "value": {},
-          "notes": { "type": "string" },
+          "key": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Stable identifier for the fact (recommended: lowercase snake_case)."
+          },
+          "value": {
+            "description": "The value of the fact. Can be any valid JSON type (string/number/bool/object/array/null)."
+          },
+          "notes": {
+            "type": "string",
+            "description": "Optional short clarifier to prevent misinterpretation."
+          },
           "evidence": {
             "type": "array",
-            "items": { "type": "string", "format": "uri" }
+            "description": "Optional list of URLs supporting the fact (prefer same-domain URLs when possible).",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
           }
         },
         "additionalProperties": false
@@ -42,18 +75,30 @@
     },
     "last_reviewed": {
       "type": "string",
-      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "ISO 8601 date (YYYY-MM-DD) indicating when the domain owner last reviewed this file."
     },
     "expires": {
       "type": "string",
-      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Optional ISO 8601 date (YYYY-MM-DD) after which this file should be treated as stale if not updated."
     },
-    "language": { "type": "string" },
+    "language": {
+      "type": "string",
+      "description": "Optional primary language of this document (BCP-47 tag, e.g., 'en', 'en-IN')."
+    },
     "contacts": {
       "type": "object",
-      "additionalProperties": { "type": "string", "format": "email" }
+      "description": "Optional role-based contacts (e.g., support, security, press). Values should be email addresses.",
+      "additionalProperties": {
+        "type": "string",
+        "format": "email"
+      }
     },
-    "extensions": { "type": "object" }
+    "extensions": {
+      "type": "object",
+      "description": "Optional namespace for domain-specific or experimental fields. Agents should ignore unknown extensions."
+    }
   },
   "additionalProperties": true
 }

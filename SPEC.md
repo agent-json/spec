@@ -85,7 +85,6 @@ Each fact is designed to be:
 - optionally backed by evidence links
 
 A fact object has:
-
 - `key` (string, recommended)
   - Stable identifier for the fact.
   - Recommendation: lowercase `snake_case` (e.g. `support_email`, `api_base_url`).

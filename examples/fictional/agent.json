@@ -8,14 +8,23 @@
       "homepage": "https://example.org/",
       "docs": "https://example.org/docs",
       "support": "https://example.org/support",
-      "privacy": "https://example.org/privacy"
+      "privacy": "https://example.org/privacy",
+      "terms": "https://example.org/terms",
+      "status": "https://status.example.org"
     }
   },
   "facts": [
     {
       "key": "support_email",
       "value": "support@example.org",
+      "notes": "Primary support contact.",
       "evidence": ["https://example.org/support"]
+    },
+    {
+      "key": "security_email",
+      "value": "security@example.org",
+      "notes": "For vulnerability reports and security inquiries.",
+      "evidence": ["https://example.org/security"]
     },
     {
       "key": "status_page",
@@ -23,11 +32,39 @@
       "notes": "Service status and incident history."
     },
     {
+      "key": "api_base_url",
+      "value": "https://api.example.org/v1",
+      "notes": "Stable base URL for public API. See docs for auth and rate limits.",
+      "evidence": ["https://example.org/docs/api"]
+    },
+    {
+      "key": "rate_limits",
+      "value": {
+        "requests_per_minute": 600,
+        "burst": 60
+      },
+      "notes": "Default limits; may vary by plan or use-case.",
+      "evidence": ["https://example.org/docs/rate-limits"]
+    },
+    {
       "key": "data_retention_days",
       "value": 30,
-      "notes": "Applies to application logs, not billing records.",
+      "notes": "Applies to application logs only. Billing/legal records may be retained longer.",
       "evidence": ["https://example.org/privacy"]
+    },
+    {
+      "key": "deletion_policy",
+      "value": "User-initiated deletion available",
+      "notes": "Deletion requests are processed within 30 days unless legally required to retain data.",
+      "evidence": ["https://example.org/privacy#deletion"]
+    },
+    {
+      "key": "supported_regions",
+      "value": ["global"],
+      "notes": "See docs for any region-specific constraints.",
+      "evidence": ["https://example.org/docs/regions"]
     }
   ],
+  "expires": "2026-05-06",
   "last_reviewed": "2026-02-06"
 }

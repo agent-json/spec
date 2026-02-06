@@ -26,6 +26,7 @@ It contains a narrow set of domain-owner asserted facts plus links to supporting
 
 This repo provides:
 - a v1 spec: [`SPEC.md`](./SPEC.md)
+- the JSON Schema: [`schema/agent-json-1.0.schema.json`](./schema/agent-json-1.0.schema.json)
 - examples: [`/examples`](./examples)
 - optional validation tooling (future)
 

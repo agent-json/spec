@@ -45,6 +45,12 @@ agent-json does NOT try to:
 - domain owners who want a canonical source for key facts
 - tool builders who want a predictable “facts endpoint” to integrate
 
+  ### Key Distinction
+
+- `robots.txt` tells crawlers what they are allowed to access.
+- `llm.txt` provides advisory, human-readable guidance to language models.
+- `agent.json` provides structured, machine-validated facts and optional AI service declarations that agents can consume deterministically.
+
 ## Try it in 5 minutes
 
 1) Open an example:
